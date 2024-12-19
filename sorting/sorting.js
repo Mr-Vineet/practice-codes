@@ -24,23 +24,23 @@ nums.sort(function (a, b) {
 
 const numbers = [1, 2, 6, 3, 4, 9, 0, 8, 7, 5];
 
-numbers.sort(function (a, b) {
-  return a - b;
-});
-
-const selectNums = function (numbers) {
-  return function (res) {
-    return numbers.filter(function (number) {
-      return (number & 1) === res;
-    });
-  };
+const isEven = function (num) {
+  return (num & 1) === 0;
 };
 
-const sortedNum = selectNums(numbers);
-const evenSorted = sortedNum(0);
-const oddSorted = sortedNum(1);
+const prioritizeEven = function (a, b) {
+    if (isEven(a) && !isEven(b)) {
+      return -1;
+    }
 
-// console.log(evenSorted.concat(oddSorted));
+    if (isEven(b) && !isEven(a)) {
+      return 1;
+    }
+
+    return a - b;
+  };
+
+numbers.sort(prioritizeEven);
 
 // alphabetical order {0 to 9, "", a to b}
 
@@ -78,6 +78,7 @@ const arr3 = ["atul", "vineet", "joy", "happy", "dukh", "keeda"];
 arr3.sort().sort(function () {
   return -1;
 });
+
 // [ "vineet", "keeda", "joy", "happy", "dukh", "atul"]
 
 //sort a string in alphabetical order
@@ -94,7 +95,7 @@ const fruits = ["apple", "mango", "banana", "leechi", "kiwi", "Apple", "Kiwi", "
 
 const arrayOfStrings = ['ugli', 'apple', 'mango', 'elephant', "banana", 'ichy', 'leechi', 'guava', 'orange', 'dragonfruit'];
 
-const orderedArray = arrayOfStrings.sort(function (a, b) {
+const organizeConsonantsAfterVowels = function (a, b) {
   const vowels = "aeiou";
 
   if (vowels.includes(a.at(0)) && !vowels.includes(b.at(0))) {
@@ -106,7 +107,9 @@ const orderedArray = arrayOfStrings.sort(function (a, b) {
   }
 
   return a.charCodeAt(0) - b.charCodeAt(0);
-});
+};
+
+const orderedArray = arrayOfStrings.sort(organizeConsonantsAfterVowels);
 
 console.log(orderedArray);
 
@@ -114,6 +117,10 @@ console.log(orderedArray);
 arr3.sort(function () {
   return Math.random() - 0.5;
 });
+
+
+
+
 
 //sorting array inside an array
 function sort(array) {
