@@ -40,9 +40,10 @@ const sortedNum = selectNums(numbers);
 const evenSorted = sortedNum(0);
 const oddSorted = sortedNum(1);
 
-console.log(evenSorted.concat(oddSorted));
+// console.log(evenSorted.concat(oddSorted));
 
 // alphabetical order {0 to 9, "", a to b}
+
 arr.sort();
 const arr1 = [1, 2, 4, 29, 100, 30, "abc", "dev"];
 arr.sort();
@@ -89,13 +90,13 @@ arr3.sort().sort(function () {
 
 const fruits = ["apple", "mango", "banana", "leechi", "kiwi", "Apple", "Kiwi", "LEechi", "Mango", "Banana"];
 
-
+//sort the array of strings to keep vowels first and then consonants both arranged in alphabetical order
 
 const arrayOfStrings = ['ugli', 'apple', 'mango', 'elephant', "banana", 'ichy', 'leechi', 'guava', 'orange', 'dragonfruit'];
 
-arrayOfStrings.sort().sort(function (a, b) {
-  // console.log(a, b);
+const orderedArray = arrayOfStrings.sort(function (a, b) {
   const vowels = "aeiou";
+
   if (vowels.includes(a.at(0)) && !vowels.includes(b.at(0))) {
     return -1;
   }
@@ -104,16 +105,10 @@ arrayOfStrings.sort().sort(function (a, b) {
     return 1;
   }
 
-  return 0;
+  return a.charCodeAt(0) - b.charCodeAt(0);
 });
 
-
-
-
-
-
-
-
+console.log(orderedArray);
 
 //gives shuffled names
 arr3.sort(function () {
